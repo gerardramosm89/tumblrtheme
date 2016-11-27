@@ -1,0 +1,106 @@
+<html>
+    <head>
+        <title>{Title}</title>
+        <link rel="shortcut icon" href="{Favicon}">
+        <link rel="alternate" type="application/rss+xml" href="{RSS}">
+        {block:Description}
+            <meta name="description" content="{MetaDescription}" />
+        {/block:Description}
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <style>
+            .thebg {
+                background: #F1F2F1 !important;
+                margin-top:50px !important;
+                font-family: 'Lato', sans-serif !important;
+            }
+            .headerbackground {
+                background: #fff;
+            }
+            .postbg {
+                background: #fff;
+                margin-top:50px !important;
+                padding-top:50px !important;
+            }
+            h1, h2, h3, h4 { 
+                color:#000;
+                letter-spacing: -2px !important;
+                font-family:'Lato',sans-serif !important;
+            }
+            .getcenter {
+                width: 600px !important;
+                padding: 20px;
+                text-align:center;
+                margin:auto !important;
+            }
+            p {
+                font-family:'Lato',sans-serif !important;
+                color: #616161 !important;
+            }
+            a {
+                font-family:'Lato',sans-serif !important;
+                letter-spacing: -2px !important;
+                color: #444 !important;
+            }
+            .caption {
+                color: #616161 !important;
+            }
+        </style>
+    </head>
+    <body class="thebg">
+        <div class="getcenter headerbackground">
+        <h1 style="letter-spacing: -1px;">{Title}</h1>
+        {block:Description}
+            <p style="letter-spacing: -1px;" id="description">{Description}</p>
+        {/block:Description}
+        {CopyrightYears}
+        </div>
+        <div class="getcenter thebg">
+            {block:Posts}
+            {block:Text}
+                    <div style="padding:50px 50px" class="text-left postbg">
+                        {block:Title}
+                            <h2><a href="{Permalink}">{Title}</a></h2>
+                        {/block:Title}{Body}
+                    </div>
+            {/block:Text}
+            {block:Photo}
+                    <div class="postbg">
+                        <img src="{PhotoURL-500}" alt="{PhotoAlt}"/>
+
+                        {block:Caption}
+                            <div style="padding:50px 50px" class="caption">{Caption}</div>
+                        {/block:Caption}
+                    </div>
+            {/block:Photo}{block:Panorama}
+                    <div class="postbg">
+                        {LinkOpenTag}
+                            <img src="{PhotoURL-Panorama}" alt="{PhotoAlt}"/>
+                        {LinkCloseTag}{block:Caption}
+                            <div>{Caption}</div>
+                        {/block:Caption}
+                    </div>
+            {/block:Panorama}
+            {block:Photoset}
+                    <div class="postbg" style="padding-top:50px;">
+                        {Photoset-500}{block:Caption}
+                            <div class="text-left" style="padding:50px 50px">{Caption}</div>
+                        {/block:Caption}
+                    </div>
+            {/block:Photoset}
+            {/block:Posts}
+        </div>
+        
+        <p id="footer">
+            {block:PreviousPage}
+                <a href="{PreviousPage}">&#171; Previous</a>
+            {/block:PreviousPage}{block:NextPage}
+                <a href="{NextPage}">Next &#187;</a>
+            {/block:NextPage}
+
+            <a href="/archive">Archive</a>
+        </p>
+    </body>
+</html>
